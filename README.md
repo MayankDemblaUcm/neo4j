@@ -1,2 +1,3 @@
 # neo4j
-Assignment for Neo4J using the SpringBoot 
+Neo4j graph database Crud Operation
+![img.png](img.png)
