@@ -2,6 +2,8 @@ package com.neo4j.assignment.controller;
 
 import com.neo4j.assignment.entities.Species;
 import com.neo4j.assignment.repositories.SpeciesRepository;
+import com.neo4j.assignment.requests.SpeciesRequest;
+import com.neo4j.assignment.services.SpeciesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,10 +17,13 @@ public class SpeciesController {
     @Autowired
     SpeciesRepository speciesRepository ;
 
+    @Autowired
+    private SpeciesService speciesService ;
+
     // Create a new species
     @PostMapping
-    public Species createSpecies(@RequestBody Species species) {
-        return speciesRepository.save(species);
+    public Species createSpecies(@RequestBody SpeciesRequest species) {
+        return speciesService.saveSpecies(species) ;
     }
 
     // Retrieve all species

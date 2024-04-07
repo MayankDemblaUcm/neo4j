@@ -2,6 +2,8 @@ package com.neo4j.assignment.controller;
 
 import com.neo4j.assignment.entities.Characters;
 import com.neo4j.assignment.repositories.CharacterRepository;
+import com.neo4j.assignment.requests.CharacterRequest;
+import com.neo4j.assignment.services.CharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,10 +17,13 @@ public class CharacterController {
     @Autowired
     private CharacterRepository characterRepository;
 
+    @Autowired
+    private CharacterService characterService ;
+
     // Create a new character
     @PostMapping
-    public Characters createCharacter(@RequestBody Characters character) {
-        return characterRepository.save(character);
+    public Characters createCharacter(@RequestBody CharacterRequest character) {
+        return characterService.saveCharacters(character);
     }
 
     // Retrieve all characters
